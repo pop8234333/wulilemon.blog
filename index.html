@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>我的博客 · GitHub Pages 静态站点</title>
+  <meta name="description" content="一个可直接部署到 GitHub Pages 的纯静态博客模板，支持标签、搜索、深色模式和无后端路由（Hash 模式）。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📘</text></svg>">
+  <link rel="preload" as="style" href="./assets/styles.css" />
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <!--
+    重要说明：
+    1) 本站使用 Hash 路由（#/post/slug），避免 GitHub Pages 的 404 刷新问题；
+    2) 所有资源皆为相对路径（./assets/...），因此既能用于 个人主页仓库 也能用于 项目站 仓库；
+    3) 不依赖任何 CDN 或第三方库，开箱即用；
+  -->
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#/">我的博客</a>
+      <nav class="nav">
+        <a href="#/">首页</a>
+        <a href="#/about">关于</a>
+        <button id="themeToggle" class="btn" aria-label="切换主题">🌓</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 站点级搜索与标签栏（仅首页显示，JS 中按路由控制） -->
+    <section id="toolbar" class="toolbar card">
+      <div class="toolbar-left">
+        <input id="searchInput" type="search" placeholder="搜索文章标题 / 摘要 / 标签..." aria-label="站内搜索" />
+      </div>
+      <div class="toolbar-right" id="tagList"><!-- 标签按钮由 JS 动态渲染 --></div>
+    </section>
+
+    <!-- 内容渲染区域 -->
+    <section id="app" aria-live="polite">
+      <!-- JS 会根据 Hash 路由渲染：文章列表、文章详情、关于页、404 等 -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> 我的博客 · 由 GitHub Pages 驱动 · <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a></p>
+    </div>
+  </footer>
+
+  <!-- 数据与逻辑脚本（无任何外部依赖） -->
+  <script defer src="./assets/posts.js"></script>
+  <script defer src="./assets/app.js"></script>
+</body>
+</html>
